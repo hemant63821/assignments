@@ -3,12 +3,23 @@
     border: 1px solid #E9E9E9;
     box-shadow: 0px 2px 4px #00000012;
     transition: box-shadow .3s;
+    padding: 10px 35px 10px 35px;
+    width: 100%;
 }
 
 .card-body{
     background-color: #ffffff;
-    padding: 10px 15px 10px 15px;
+    padding: 10px 35px 10px 35px;
 }
+
+.content{
+    padding : 30px;
+    .content-values{
+        padding-top : 25px;
+    }
+}
+
+
 
 h1{
     font-size: 21px;
@@ -18,4 +29,25 @@ h1{
     height: 1px;
     background-color: #EAEAEA;
     margin: 15px -15px 0 -15px;
+}
+
+.input-range__label--max{
+	right:1px;
+}
+.input-range__slider{
+	background:#DA2128 !important;
+	border:2px solid #D9D9D9 !important;
+}
+.slider .input-range__track--active{
+	background:#DA2128 !important;
+}
+.input-range__label{
+	font-size: 14px !important;
+	color: #333333 !important;
+}
+
+.slider {
+  .input-range__track--active {
+    background: black;
+  }
 }
