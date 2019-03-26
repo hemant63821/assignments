@@ -1,0 +1,22 @@
+
+.card {
+    border: 1px solid #E9E9E9;
+    box-shadow: 0px 2px 4px #00000012;
+    transition: box-shadow .3s;
+}
+
+.card-body{
+    background-color: #ffffff;
+    padding: 10px 15px 10px 15px;
+    height: 100px;
+}
+
+h1{
+    font-size: 21px;
+}
+
+.hrLine {
+    height: 1px;
+    background-color: #EAEAEA;
+    margin: 15px -15px 0 -15px;
+}
