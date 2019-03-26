@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './LoanComponent.scss'
 import InputRange from 'react-input-range'
 import "react-input-range/lib/css/index.css";
+import Axios from 'axios'
 
 class LoanComponent extends Component {
 
@@ -15,21 +16,39 @@ class LoanComponent extends Component {
         }
     }
 
+    getInterestPerTenure = (amount, tenure) => {
+        Axios.get('https://ftl-frontend-test.herokuapp.com/interest?' + 'amount=' + amount + '&numMonths=' + tenure)
+            .then(data => {
+                if (data.status == 200) {
+                    console.log('check data', data.data)
+                }
+            })
+            .catch(function (error) {
+
+            })
+    }
+
     onChange = (e) => {
+        var amount = this.state.loanAmount
+        var tenure = this.state.loanTenure
         if (e.target.id == "money") {
+            amount = e.target.value
             this.setState({
                 loanAmount: e.target.value,
+                sliderAmountValues: e.target.value
             })
         }
         if (e.target.id == "tenure") {
+            tenure = e.target.value
             this.setState({
                 loanTenure: e.target.value,
+                sliderTimeValues: e.target.value
             })
         }
+        this.getInterestPerTenure(amount, tenure)
     }
 
-
-    convertToIndianCurrencyFormat = (str) => {
+    convertToCurrencyFormat = (str) => {
         if (str) {
             var x = str;
             x = x.toString();
@@ -56,6 +75,7 @@ class LoanComponent extends Component {
                 loanAmount: value
             })
         }
+        this.getInterestPerTenure(this.state.loanAmount, this.state.loanTenure)
     }
 
     maxLengthCheck = (e) => {
@@ -91,7 +111,7 @@ class LoanComponent extends Component {
                                 <div className="row-sm-12 content-values">
                                     <div className="slider">
                                         <InputRange
-                                            formatLabel={value => `${this.convertToIndianCurrencyFormat(value)}\u20B9`}
+                                            formatLabel={value => `${this.convertToCurrencyFormat(value)}$`}
                                             maxValue={5000}
                                             minValue={500}
                                             ref="input_range"
