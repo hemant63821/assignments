@@ -22,6 +22,9 @@ class LoanComponent extends Component {
                 if (data.status == 200) {
                     console.log('check data', data.data)
                 }
+                if (data.status == "error") {
+                    console.log("error")
+                }
             })
             .catch(function (error) {
 
