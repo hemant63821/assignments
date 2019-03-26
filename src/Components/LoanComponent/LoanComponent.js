@@ -12,7 +12,9 @@ class LoanComponent extends Component {
             sliderAmountValues: 500,
             sliderTimeValues: 6,
             loanAmount: 500,
-            loanTenure: 6
+            loanTenure: 6,
+            tenureError: false,
+            amountError: false
         }
     }
 
@@ -34,20 +36,49 @@ class LoanComponent extends Component {
     onChange = (e) => {
         var amount = this.state.loanAmount
         var tenure = this.state.loanTenure
+        var val = Number(e.target.value)
         if (e.target.id == "money") {
-            amount = e.target.value
             this.setState({
                 loanAmount: e.target.value,
-                sliderAmountValues: e.target.value
             })
+            if (val >= 500 && val <= 5000) {
+                amount = val
+                this.setState({
+                    sliderAmountValues: val,
+                    amountError: false
+                })
+                this.getAllInterestsCheck(amount, tenure)
+            }
+
+            else {
+                this.setState({
+                    amountError: true
+                })
+            }
+
         }
+
         if (e.target.id == "tenure") {
-            tenure = e.target.value
             this.setState({
                 loanTenure: e.target.value,
-                sliderTimeValues: e.target.value
             })
+            if (val >= 6 && val <= 24) {
+                tenure = val
+                this.setState({
+                    sliderTimeValues: val,
+                    tenureError: false
+                })
+                this.getAllInterestsCheck(amount, tenure)
+            }
+            else {
+                this.setState({
+                    tenureError: true
+                })
+            }
         }
+    }
+
+    getAllInterestsCheck = (amount, tenure) => {
         this.getInterestPerTenure(amount, tenure)
     }
 
@@ -111,6 +142,12 @@ class LoanComponent extends Component {
                                     <input type="text" maxLength="4" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="money" value={this.state.loanAmount} onChange={(e) => this.onChange(e)} >
                                     </input>
                                 </div>
+                                {
+                                    this.state.amountError ?
+                                        (<span className="errorMsg">
+                                            * Please Enter Amount between 500 and 5000$
+                                        </span>) : null
+                                }
                                 <div className="row-sm-12 content-values">
                                     <div className="slider">
                                         <InputRange
@@ -133,6 +170,12 @@ class LoanComponent extends Component {
                                     <input type="text" maxLength="2" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="tenure" value={this.state.loanTenure} onChange={(e) => this.onChange(e)} >
                                     </input>
                                 </div>
+                                {
+                                    this.state.tenureError ?
+                                        (<span className="errorMsg">
+                                            * Please Enter between 6 and 12 months
+                                        </span>) : null
+                                }
                                 <div className="row-sm-12 content-values">
                                     <div className="slider">
                                         <InputRange
