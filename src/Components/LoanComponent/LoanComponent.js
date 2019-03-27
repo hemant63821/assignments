@@ -147,17 +147,23 @@ class LoanComponent extends Component {
                         <h1>Loan Calculator</h1>
                         <div className="hrLine"></div>
                         <div className="row content">
-                            <div className="col-sm-12">
-                                <div className="row-sm-12 content-values">
-                                    <input type="text" maxLength="4" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="money" value={this.state.loanAmount} onChange={(e) => this.onChange(e)} >
-                                    </input>
-                                </div>
-                                {
-                                    this.state.amountError ?
-                                        (<span className="errorMsg">
-                                            * Please Enter Amount between 500$ and 5000$
+                            <div className="col-sm-12 content-values">
+                                <div className="row">
+                                    <div className="col-sm-3 pull-left label-name">
+                                        Amount
+                                    </div>
+                                    <div className="col-sm-8 pull-left">
+                                        <input type="text" maxLength="4" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="money" value={this.state.loanAmount} onChange={(e) => this.onChange(e)} >
+                                        </input>
+                                        {
+                                            this.state.amountError ?
+                                                (<span className="errorMsg">
+                                                    * Please Enter Amount between 500$ and 5000$
                                         </span>) : null
-                                }
+                                        }
+                                    </div>
+                                </div>
+
                                 <div className="row-sm-12 content-values">
                                     <div className="slider">
                                         <InputRange
@@ -175,18 +181,21 @@ class LoanComponent extends Component {
                         </div>
                         <div className="row content">
                             <div className="col-sm-12">
-                                <div className="row-sm-12 content-values">
-                                    Tenure
-                                    <input type="text" maxLength="2" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="tenure" value={this.state.loanTenure} onChange={(e) => this.onChange(e)} >
-                                    </input>
-                                    {
-                                        this.state.tenureError ?
-                                            (<span className="errorMsg">
-                                                * Please Enter between 6 months and 12 months
+                                <div className="row">
+                                    <div className="col-sm-3 pull-left label-name">
+                                        Tenure
+                                    </div>
+                                    <div className="col-sm-8 pull-left">
+                                        <input type="text" maxLength="2" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="tenure" value={this.state.loanTenure} onChange={(e) => this.onChange(e)} >
+                                        </input>
+                                        {
+                                            this.state.tenureError ?
+                                                (<span className="errorMsg">
+                                                    * Please Enter between 6 months and 12 months
                                             </span>) : null
-                                    }
+                                        }
+                                    </div>
                                 </div>
-
                                 <div className="row-sm-12 content-values">
                                     <div className="slider">
                                         <InputRange
@@ -231,7 +240,7 @@ class LoanComponent extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

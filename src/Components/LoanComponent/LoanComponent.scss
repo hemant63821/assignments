@@ -7,6 +7,14 @@
     width: 100%;
 }
 
+.pull-left {
+    float: left;
+}
+
+.label-name{
+    margin-top: 8px;
+}
+
 .card-body{
     background-color: #ffffff;
     padding: 10px 35px 10px 35px;
@@ -60,6 +68,7 @@ h1{
 }
 
 .calculator_left_content {
+    margin: 0px auto;
     border: 1px solid #e5e5e5;
     background: #f6f6f6;
     overflow: hidden;
