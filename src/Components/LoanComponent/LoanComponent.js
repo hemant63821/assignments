@@ -183,7 +183,7 @@ class LoanComponent extends Component {
                                         this.state.tenureError ?
                                             (<span className="errorMsg">
                                                 * Please Enter between 6 months and 12 months
-                                        </span>) : null
+                                            </span>) : null
                                     }
                                 </div>
 
