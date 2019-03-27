@@ -14,15 +14,25 @@ class LoanComponent extends Component {
             loanAmount: 500,
             loanTenure: 6,
             tenureError: false,
-            amountError: false
+            amountError: false,
+            interestRate: '',
+            monthlyPayment: '',
+            numPayments: '',
+            principal: ''
         }
+        this.getInterestPerTenure(500, 6)
     }
 
     getInterestPerTenure = (amount, tenure) => {
         Axios.get('https://ftl-frontend-test.herokuapp.com/interest?' + 'amount=' + amount + '&numMonths=' + tenure)
             .then(data => {
                 if (data.status == 200) {
-                    console.log('check data', data.data)
+                    this.setState({
+                        interestRate: data.data.interestRate,
+                        monthlyPayment: data.data.monthlyPayment.amount,
+                        numPayments: data.data.numPayments,
+                        principal: data.data.principal.amount
+                    })
                 }
                 if (data.status == "error") {
                     console.log("error")
@@ -145,7 +155,7 @@ class LoanComponent extends Component {
                                 {
                                     this.state.amountError ?
                                         (<span className="errorMsg">
-                                            * Please Enter Amount between 500 and 5000$
+                                            * Please Enter Amount between 500$ and 5000$
                                         </span>) : null
                                 }
                                 <div className="row-sm-12 content-values">
@@ -169,13 +179,14 @@ class LoanComponent extends Component {
                                     Tenure
                                     <input type="text" maxLength="2" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="tenure" value={this.state.loanTenure} onChange={(e) => this.onChange(e)} >
                                     </input>
-                                </div>
-                                {
-                                    this.state.tenureError ?
-                                        (<span className="errorMsg">
-                                            * Please Enter between 6 and 12 months
+                                    {
+                                        this.state.tenureError ?
+                                            (<span className="errorMsg">
+                                                * Please Enter between 6 months and 12 months
                                         </span>) : null
-                                }
+                                    }
+                                </div>
+
                                 <div className="row-sm-12 content-values">
                                     <div className="slider">
                                         <InputRange
@@ -192,12 +203,34 @@ class LoanComponent extends Component {
                             </div>
                         </div>
                         <div className="row content">
-                        </div>
-                        <div className="row content">
+                            <div class="calculator_left_content">
+                                <div className="calculator_content">
+                                    <h1>EMI Result</h1>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Loan Amount:</td>
+                                                <td><span class="slider_1_span emi-calculator-span">$ {this.state.principal}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Rate of Interest:</td>
+                                                <td><span class="slider_2_span emi-calculator-span"> {this.state.interestRate} %</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tenure:</td>
+                                                <td><span class="slider_3_span emi-calculator-span">{this.state.numPayments} months</span></td>
+                                            </tr>
+                                            <tr class="result">
+                                                <td>Monthly EMI:</td>
+                                                <td> <span id="emi_result">$ {this.state.monthlyPayment}</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

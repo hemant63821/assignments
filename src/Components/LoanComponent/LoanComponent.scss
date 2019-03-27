@@ -13,16 +13,20 @@
 }
 
 .content{
-    padding : 30px;
+    padding: 20px 35px 20px 35px;
     .content-values{
         padding-top : 25px;
+        
     }
+    .errorMsg {
+        color: #cc0000;
+        margin-bottom: 12px;
+        margin-top: 10px;
+        font-size: 15px;
+      }
 }
 
-.errorMsg {
-    color: #cc0000;
-    margin-bottom: 12px;
-  }
+
 
 h1{
     font-size: 21px;
@@ -53,4 +57,16 @@ h1{
   .input-range__track--active {
     background: black;
   }
+}
+
+.calculator_left_content {
+    border: 1px solid #e5e5e5;
+    background: #f6f6f6;
+    overflow: hidden;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    .calculator_content{
+        padding: 20px 35px 20px 35px;
+    }
 }
