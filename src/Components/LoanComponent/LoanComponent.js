@@ -227,20 +227,20 @@ class LoanComponent extends Component {
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td width="50%">Loan Amount:</td>
-                                                <td width="50%"> <span className="slider_1_span emi-calculator-span">$ {this.state.principal}</span></td>
+                                                <td width="50%" mt-2>Loan Amount:</td>
+                                                <td width="50%" mt-2> <span className="slider_1_span emi-calculator-span">$ {this.state.principal}</span></td>
                                             </tr>
                                             <tr>
-                                                <td>Rate of Interest:</td>
-                                                <td><span className="slider_2_span emi-calculator-span"> {this.state.interestRate} %</span></td>
+                                                <td mt-2>Rate of Interest:</td>
+                                                <td mt-2><span className="slider_2_span emi-calculator-span"> {this.state.interestRate} %</span></td>
                                             </tr>
                                             <tr>
-                                                <td>Tenure:</td>
-                                                <td><span className="slider_3_span emi-calculator-span">{this.state.numPayments} months</span></td>
+                                                <td mt-2>Tenure:</td>
+                                                <td mt-2><span className="slider_3_span emi-calculator-span">{this.state.numPayments} months</span></td>
                                             </tr>
-                                            <tr className="result">
-                                                <td>Monthly EMI:</td>
-                                                <td> <span id="emi_result">$ {this.state.monthlyPayment}</span></td>
+                                            <tr>
+                                                <td mt-2>Monthly EMI:</td>
+                                                <td mt-2> <span id="emi_result">$ {this.state.monthlyPayment}</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
