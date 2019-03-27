@@ -153,8 +153,12 @@ class LoanComponent extends Component {
                                         Amount
                                     </div>
                                     <div className="col-sm-8 pull-left">
-                                        <input type="text" maxLength="4" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="money" value={this.state.loanAmount} onChange={(e) => this.onChange(e)} >
+                                        <input type="text" maxLength="4" className="form-control input-group col-sm-6" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="money" value={this.state.loanAmount} onChange={(e) => this.onChange(e)} >
                                         </input>
+                                        <div class="input-group-append pull-left">
+                                            <span class="input-group-text " id="basic-addon2">$</span>
+                                        </div>
+
                                         {
                                             this.state.amountError ?
                                                 (<span className="errorMsg">
@@ -162,6 +166,7 @@ class LoanComponent extends Component {
                                         </span>) : null
                                         }
                                     </div>
+
                                 </div>
 
                                 <div className="row-sm-12 content-values">
@@ -194,6 +199,9 @@ class LoanComponent extends Component {
                                                     * Please Enter between 6 months and 12 months
                                             </span>) : null
                                         }
+                                    </div>
+                                    <div class="input-group-append pull-left">
+                                        <span class="input-group-text" id="basic-addon2">months</span>
                                     </div>
                                 </div>
                                 <div className="row-sm-12 content-values">
