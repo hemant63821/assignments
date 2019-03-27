@@ -152,11 +152,11 @@ class LoanComponent extends Component {
                                     <div className="col-sm-3 pull-left label-name">
                                         Amount
                                     </div>
-                                    <div className="col-sm-8 pull-left">
-                                        <input type="text" maxLength="4" className="form-control input-group col-sm-6" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="money" value={this.state.loanAmount} onChange={(e) => this.onChange(e)} >
+                                    <div className="col-sm-8 input-group pull-left">
+                                        <input type="text" maxLength="4" className="form-control col-sm-7" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="money" value={this.state.loanAmount} onChange={(e) => this.onChange(e)} >
                                         </input>
-                                        <div class="input-group-append pull-left">
-                                            <span class="input-group-text " id="basic-addon2">$</span>
+                                        <div className="input-group-append pull-left">
+                                            <span className="input-group-text " id="basic-addon2">$</span>
                                         </div>
 
                                         {
@@ -190,9 +190,12 @@ class LoanComponent extends Component {
                                     <div className="col-sm-3 pull-left label-name">
                                         Tenure
                                     </div>
-                                    <div className="col-sm-8 pull-left">
-                                        <input type="text" maxLength="2" className="form-control col-sm-8" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="tenure" value={this.state.loanTenure} onChange={(e) => this.onChange(e)} >
+                                    <div className="col-sm-8 input-group pull-left">
+                                        <input type="text" maxLength="2" className="form-control col-sm-7" onKeyPress={this.isNumeric.bind(this)} onInput={this.maxLengthCheck.bind(this)} id="tenure" value={this.state.loanTenure} onChange={(e) => this.onChange(e)} >
                                         </input>
+                                        <div className="input-group-append">
+                                            <span className="input-group-text" id="basic-addon2">months</span>
+                                        </div>
                                         {
                                             this.state.tenureError ?
                                                 (<span className="errorMsg">
@@ -200,9 +203,7 @@ class LoanComponent extends Component {
                                             </span>) : null
                                         }
                                     </div>
-                                    <div class="input-group-append pull-left">
-                                        <span class="input-group-text" id="basic-addon2">months</span>
-                                    </div>
+
                                 </div>
                                 <div className="row-sm-12 content-values">
                                     <div className="slider">
@@ -220,24 +221,24 @@ class LoanComponent extends Component {
                             </div>
                         </div>
                         <div className="row content">
-                            <div class="calculator_left_content">
+                            <div className="calculator_left_content">
                                 <div className="calculator_content">
                                     <h1>EMI Result</h1>
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td>Loan Amount:</td>
-                                                <td><span class="slider_1_span emi-calculator-span">$ {this.state.principal}</span></td>
+                                                <td width="50%">Loan Amount:</td>
+                                                <td width="50%"> <span className="slider_1_span emi-calculator-span">$ {this.state.principal}</span></td>
                                             </tr>
                                             <tr>
                                                 <td>Rate of Interest:</td>
-                                                <td><span class="slider_2_span emi-calculator-span"> {this.state.interestRate} %</span></td>
+                                                <td><span className="slider_2_span emi-calculator-span"> {this.state.interestRate} %</span></td>
                                             </tr>
                                             <tr>
                                                 <td>Tenure:</td>
-                                                <td><span class="slider_3_span emi-calculator-span">{this.state.numPayments} months</span></td>
+                                                <td><span className="slider_3_span emi-calculator-span">{this.state.numPayments} months</span></td>
                                             </tr>
-                                            <tr class="result">
+                                            <tr className="result">
                                                 <td>Monthly EMI:</td>
                                                 <td> <span id="emi_result">$ {this.state.monthlyPayment}</span></td>
                                             </tr>
